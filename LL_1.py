@@ -22,12 +22,15 @@ class LinkedList:
         return True
         
 
-    # WRITE FIND_MIDDLE_NODE METHOD HERE #
-    #                                    #
-    #                                    #
-    #                                    #
-    #                                    #
-    ######################################
+    def find_middle_node(self):
+        slow_pointer = self.head
+        fast_pointer = self.head
+
+        while (fast_pointer and fast_pointer.next):
+            slow_pointer = slow_pointer.next
+            fast_pointer = fast_pointer.next.next
+
+        return slow_pointer
 
 
 
@@ -36,6 +39,23 @@ my_linked_list.append(2)
 my_linked_list.append(3)
 my_linked_list.append(4)
 my_linked_list.append(5)
+my_linked_list.append(6)
 
-print( my_linked_list.find_middle_node().value )
+print(my_linked_list.find_middle_node().value)
 
+#papildus risinājums
+
+import re
+myinput = input()
+if (re.search("^-?\\d*(\\.\\d+)?$", myinput)):
+    my_little_list = LinkedList(myinput)
+
+    myinput = input()
+    while (True):
+        if not (re.search("^-?\\d*(\\.\\d+)?$", myinput)):
+            print("tas nav skaitlis")
+        my_little_list.append(myinput)
+        myinput = input()
+
+else:
+    print("tas nav skaitlis")
